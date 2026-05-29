@@ -1,0 +1,135 @@
+import type { AppStore } from "@/lib/types";
+
+const now = new Date().toISOString();
+
+export const defaultStore: AppStore = {
+  campaigns: [
+    {
+      id: "camp-starter-pack",
+      name: "Starter Pack Deal Drop",
+      whopSectionLink: "https://whop.com/content-rewards/starter-pack",
+      whopCampaignUrl: "https://whop.com/campaigns/starter-pack",
+      requirementsText:
+        "Use the official Starter Pack B-roll only. Mention the 7-day trial. Required hashtags: #StarterPack #WhopPartner. Add #ad at the start of the caption. No extra hashtags. Do not promise guaranteed earnings. Deadline is June 8, 2026.",
+      officialAssetLink: "https://assets.clipflow.ai/demo/starter-pack",
+      platform: "TikTok",
+      deadline: "2026-06-08",
+      status: "active",
+      expectedPayout: 250,
+      aiAnalysis: {
+        requiredTags: ["#StarterPack", "#WhopPartner"],
+        requiredDisclosure: "#ad",
+        bannedHashtags: ["#makemoneyfast", "#guaranteedincome"],
+        assetRules: [
+          "Only use the official Starter Pack B-roll from the linked asset folder.",
+          "Do not add third-party screenshots or unapproved logos.",
+        ],
+        platformRules: [
+          "Lead with a quick hook in the first sentence.",
+          "Keep hashtags limited to the required set only.",
+        ],
+        rejectionRisks: [
+          "Missing the 7-day trial mention may trigger rejection.",
+          "Extra hashtags can void the post for non-compliance.",
+        ],
+        finalChecklist: [
+          "Use only the official asset folder.",
+          "Add #ad at the beginning.",
+          "Include both required hashtags and no extras.",
+          "Mention the 7-day trial clearly.",
+        ],
+        summary:
+          "Strict hashtag policy with required disclosure and official asset-only usage.",
+      },
+      generatedCaptions: {
+        youtubeShortTitles: [
+          {
+            text: "This 7-Day Trial Hook Is My Fastest Creator Workflow Yet",
+            risky: false,
+          },
+        ],
+        youtubeDescriptions: [
+          {
+            text: "#ad Testing the Starter Pack 7-day trial with the official clips only. #StarterPack #WhopPartner",
+            risky: false,
+          },
+        ],
+        tiktokCaptions: [
+          {
+            text: "#ad The Starter Pack 7-day trial made this clip workflow way cleaner. #StarterPack #WhopPartner",
+            risky: false,
+          },
+        ],
+        instagramCaptions: [
+          {
+            text: "#ad Building faster with the Starter Pack 7-day trial and official assets only. #StarterPack #WhopPartner",
+            risky: false,
+          },
+        ],
+        riskyCaptions: [],
+        complianceNotes: [
+          "No extra hashtags beyond the required list.",
+          "Keep performance claims grounded and non-guaranteed.",
+        ],
+        generatedAt: now,
+      },
+      createdAt: now,
+      updatedAt: now,
+    },
+    {
+      id: "camp-youtube-lab",
+      name: "YouTube Growth Lab",
+      whopSectionLink: "https://whop.com/content-rewards/yt-lab",
+      whopCampaignUrl: "https://whop.com/campaigns/youtube-growth-lab",
+      requirementsText:
+        "Manual paste required if the page is unavailable. Mention official templates only. Required disclosure: Sponsored. Banned hashtags: #viralhack. Include creator discount code in description.",
+      officialAssetLink: "https://assets.clipflow.ai/demo/youtube-lab",
+      platform: "YouTube Shorts",
+      deadline: "2026-06-14",
+      status: "ready-to-clip",
+      expectedPayout: 420,
+      aiAnalysis: null,
+      generatedCaptions: null,
+      createdAt: now,
+      updatedAt: now,
+    },
+  ],
+  clips: [
+    {
+      id: "clip-one",
+      campaignId: "camp-starter-pack",
+      clipTitle: "Fast before/after workflow montage",
+      platform: "TikTok",
+      caption:
+        "#ad The Starter Pack 7-day trial made this clip workflow way cleaner. #StarterPack #WhopPartner",
+      opusClipStatus: "completed",
+      videoFileStatus: "ready",
+      postedUrl: "",
+      views: 0,
+      whopSubmissionStatus: "checklist-ready",
+      whopSubmissionLink: "",
+      createdAt: now,
+      updatedAt: now,
+    },
+    {
+      id: "clip-two",
+      campaignId: "camp-youtube-lab",
+      clipTitle: "3 creator mistakes hook with branded template reveal",
+      platform: "YouTube Shorts",
+      caption: "Sponsored 3 mistakes creators make before testing a new growth lab workflow.",
+      opusClipStatus: "processing",
+      videoFileStatus: "editing",
+      postedUrl: "",
+      views: 0,
+      whopSubmissionStatus: "not-started",
+      whopSubmissionLink: "",
+      createdAt: now,
+      updatedAt: now,
+    },
+  ],
+  settings: {
+    n8nWebhookUrl: "",
+    defaultDisclosure: "#ad",
+    updatedAt: now,
+  },
+};

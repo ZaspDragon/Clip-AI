@@ -1,0 +1,40 @@
+import { NextResponse } from "next/server";
+
+import { processCampaignWithAI } from "@/lib/ai";
+import {
+  getCampaign,
+  getSettings,
+  saveGeneratedCaptions,
+  saveRequirementAnalysis,
+} from "@/lib/repository";
+
+export async function POST(
+  _request: Request,
+  { params }: { params: Promise<{ id: string }> },
+) {
+  try {
+    const { id } = await params;
+    const [campaign, settings] = await Promise.all([getCampaign(id), getSettings()]);
+
+    if (!campaign) {
+      return NextResponse.json({ error: "Campaign not found." }, { status: 404 });
+    }
+
+    const result = await processCampaignWithAI(campaign, settings.n8nWebhookUrl);
+
+    await Promise.all([
+      saveRequirementAnalysis(id, result.extraction),
+      saveGeneratedCaptions(id, result.captions),
+    ]);
+
+    return NextResponse.json({ ok: true, ...result });
+  } catch (error) {
+    return NextResponse.json(
+      {
+        error:
+          error instanceof Error ? error.message : "AI processing failed.",
+      },
+      { status: 500 },
+    );
+  }
+}
