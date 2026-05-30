@@ -1,20 +1,21 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f6efe4;
-  --foreground: #132238;
-  --card: rgba(255, 251, 245, 0.92);
-  --card-strong: #fffaf2;
-  --line: rgba(19, 34, 56, 0.12);
-  --muted: #59677c;
-  --accent: #f26a4b;
-  --accent-deep: #d74d2d;
-  --accent-soft: #ffd9c8;
-  --ink-soft: #29415d;
-  --success: #1d7a5f;
-  --warning: #bb6f22;
-  --danger: #b73a3a;
-  --shadow: 0 18px 50px rgba(19, 34, 56, 0.12);
+  --background: #f3f7ff;
+  --foreground: #11233f;
+  --card: rgba(255, 255, 255, 0.95);
+  --card-strong: #ffffff;
+  --line: rgba(17, 35, 63, 0.12);
+  --muted: #60718c;
+  --accent: #1d6fff;
+  --accent-deep: #144fc9;
+  --accent-soft: #d7e8ff;
+  --navy: #0d1b3a;
+  --ink-soft: #2f4872;
+  --success: #168063;
+  --warning: #b36a14;
+  --danger: #c13f3f;
+  --shadow: 0 24px 60px rgba(14, 31, 64, 0.12);
 }
 
 @theme inline {
@@ -30,9 +31,9 @@
 
 html {
   background:
-    radial-gradient(circle at top left, rgba(242, 106, 75, 0.2), transparent 34%),
-    radial-gradient(circle at top right, rgba(255, 217, 200, 0.6), transparent 26%),
-    linear-gradient(180deg, #fffaf1 0%, #f6efe4 56%, #f2eadc 100%);
+    radial-gradient(circle at top left, rgba(29, 111, 255, 0.18), transparent 30%),
+    radial-gradient(circle at top right, rgba(215, 232, 255, 0.9), transparent 24%),
+    linear-gradient(180deg, #f8fbff 0%, #eff5ff 46%, #eef2fb 100%);
 }
 
 body {
@@ -59,10 +60,12 @@ textarea {
 
 .app-shell {
   min-height: 100vh;
-  background-image:
-    linear-gradient(rgba(255, 255, 255, 0.45) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.45) 1px, transparent 1px);
-  background-size: 28px 28px;
+  background-image: linear-gradient(
+      rgba(255, 255, 255, 0.55) 1px,
+      transparent 1px
+    ),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.55) 1px, transparent 1px);
+  background-size: 30px 30px;
 }
 
 .glass-card {
@@ -131,9 +134,9 @@ textarea {
 }
 
 .button-primary {
-  background: linear-gradient(135deg, var(--accent) 0%, #ff8f54 100%);
+  background: linear-gradient(135deg, var(--accent) 0%, #3d93ff 100%);
   color: white;
-  box-shadow: 0 12px 24px rgba(242, 106, 75, 0.28);
+  box-shadow: 0 12px 28px rgba(29, 111, 255, 0.3);
 }
 
 .button-primary:hover {
@@ -163,6 +166,27 @@ textarea {
   color: var(--ink-soft);
 }
 
+.button-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.55rem;
+  border-radius: 999px;
+  padding: 0.85rem 1.15rem;
+  font-weight: 700;
+  color: white;
+  background: linear-gradient(135deg, #d84d4d 0%, #bd3030 100%);
+  box-shadow: 0 12px 24px rgba(193, 63, 63, 0.28);
+  transition:
+    transform 140ms ease,
+    box-shadow 140ms ease,
+    background-color 140ms ease;
+}
+
+.button-danger:hover {
+  transform: translateY(-1px);
+}
+
 .fade-up {
   animation: fade-up 420ms ease both;
 }
@@ -176,6 +200,39 @@ textarea {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+.table-shell {
+  overflow: hidden;
+  border-radius: 1.5rem;
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.data-table th,
+.data-table td {
+  padding: 0.9rem 1rem;
+  text-align: left;
+  font-size: 0.95rem;
+  border-bottom: 1px solid rgba(17, 35, 63, 0.08);
+}
+
+.data-table th {
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: rgba(241, 247, 255, 0.95);
+}
+
+.data-table tr:last-child td {
+  border-bottom: 0;
 }
 
 @media (max-width: 640px) {
